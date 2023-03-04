@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<div>
+Liste des produits : 
+Trier par :  
+<select id="typeSirop" name="typeSirop" [(ngModel)]="typeSiropNom" (change)="filterChange(typeSiropNom)">
+    <option value="0">Tous</option>
+    <option *ngFor="let typeS of listeTypesObs | async" value="{{typeS.nom}}">{{typeS.nom}}</option>
+</select>
+</div>
+<div *ngFor="let produit of listeProduitsObs | async">
+        <div class="row p-0 m-0">
+            <div class="col-1">{{produit.nom}}</div>
+            <div class="col-1">{{produit.type.nom}}</div>
+            <div class="col-2">{{produit.description}}</div>
+            <div class="col-1">{{produit.contenance}}</div>
+            <div class="col-1">${{produit.prix}}</div>
+            <div class="col-1">{{produit.imageUrl}}</div>
+            <div class="col-1"></div>
+            <div class="col-2"><button (click)="ajouterProduit(produit,1)" >Ajouter</button></div>
+        </div>
+</div>

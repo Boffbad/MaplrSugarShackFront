@@ -1,0 +1,27 @@
+<app-menu></app-menu>
+
+Liste des produits du panier :
+
+<div class="row p-0 m-0">
+        <div class="col-2"> Nom</div>
+        <div class="col-1"> </div>
+        <div class="col-2"> Quantite</div>
+        <div class="col-1"> </div>
+        <div class="col-2"> Prix unitaire</div>
+        <div class="col-2"> Prix total</div>
+    </div>
+
+<div *ngFor="let ligneCommande of listeLigneCommandeObs | async">
+    <div class="row p-0 m-0">
+        <div class="col-2"> {{ligneCommande.produit.nom}}</div>
+        <div class="col-1"> <button (click)="reduire(ligneCommande)"> -</button></div>
+        <div class="col-2"> {{ligneCommande.quantite}}</div>
+        <div class="col-1"> <button (click)="ajouter(ligneCommande)"> +</button></div>
+        <div class="col-2"> ${{ligneCommande.prixUnitaire}}</div>
+        <div class="col-2"> ${{ligneCommande.prixUnitaire * ligneCommande.quantite}} </div>
+        <div class="col-2"> <button (click)="deleteItemFromCommande(ligneCommande)"> Supprimer</button></div>
+    </div>
+</div>
+<div>Total : ${{total}}</div>
+
+<div><button (click)="validerPanier()">Valider panier</button></div>

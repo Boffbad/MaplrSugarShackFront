@@ -1,0 +1,10 @@
+<app-menu></app-menu>
+Historique des commandes : 
+
+<div *ngFor="let commande of listeCommandeObs | async">
+        <div class="row p-0 m-0">
+            <div class="col-2"> {{commande.id}} </div>
+            <div class="col-2"> {{commande.statutCommande.nom}} </div>
+        </div>
+
+</div>
